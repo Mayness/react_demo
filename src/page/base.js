@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, withRouter} from 'react-router-dom'
 const BasicExample = ({match}) => (
   <Router basename={match.url}>
     <div>
@@ -36,7 +36,21 @@ const topics = ({match}) => (
         </Link>
       </li>
     </ul>
-    <Route path={`${match.url}/:props`} component={({match}) => (<h3>this is {match.params.props}</h3>)}/>
+    <Route path={`${match.url}/:props`} component={mathRouter}/>
   </div>
+)
+
+const mathRouter = withRouter((obj)  => {
+  const params = {a: 111}
+  return (
+  <h3>
+    this is {obj.match.params.props}<br/><br/>
+    <Para {...params}/>
+    <button onClick={() => obj.history.push('/topics')}>返回</button>
+  </h3>)
+})
+
+const Para = (obj) => (
+  <div>{obj.a}</div>
 )
 export default BasicExample
