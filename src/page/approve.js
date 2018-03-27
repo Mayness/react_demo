@@ -48,8 +48,8 @@ const AuthButton = withRouter(({ history }) => (
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
-    <Route {...rest} render={props => (
-      fakeAuth.isAuthenticated ? (
+    <Route {...rest} render={props => {
+      return fakeAuth.isAuthenticated ? (
         <Component {...props}/>
       ) : (
         <Redirect to={{
@@ -57,7 +57,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           state: { from: props.location }
         }}/>
       )
-    )}/>
+    }}/>
   )
 }
 
@@ -81,7 +81,6 @@ class Login extends React.Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { redirectToReferrer } = this.state
-    
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>

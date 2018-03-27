@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import base from './base'
 import url from './url'
 import approve from './approve'
+import customLink from './customLink'
+import notMatch from './notMatch'
 import Error from './Error'
 import Nav from '../router/index_nav'
 
@@ -21,13 +23,15 @@ class AppComponent extends React.Component {
               <Route exact path="/base" component={base}/>
               <Route path="/url" component={url}/>
               <Route path="/approve" component={approve}/>
+              <Route path="/customLink" component={customLink}/>
+              <Route path="/notMatch" component={notMatch}/>
               <Redirect from="/redirect" to="/b"/>
               <Route component={Error}/>
             </Switch>
           </div>
         </Router>
       </div>
-    );
+    )
   }
 }
 
