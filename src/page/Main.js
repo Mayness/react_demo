@@ -9,6 +9,7 @@ import approve from './approve'
 import customLink from './customLink'
 import notMatch from './notMatch'
 import Error from './Error'
+import config from './config'
 import Nav from '../router/index_nav'
 
 
@@ -25,6 +26,7 @@ class AppComponent extends React.Component {
               <Route path="/approve" component={approve}/>
               <Route path="/customLink" component={customLink}/>
               <Route path="/notMatch" component={notMatch}/>
+              <Route path="/config" component={config}/>
               <Redirect from="/redirect" to="/b"/>
               <Route component={Error}/>
             </Switch>
